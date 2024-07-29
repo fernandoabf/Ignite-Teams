@@ -15,8 +15,8 @@ export function Header({ showBackButton = false }: HeaderProps) {
                     <BackIcon />
                 </BackButton>
             }
-
             <Logo source={LogoPng} />
+
         </Container>
     )
 }

@@ -2,19 +2,37 @@ import { Header } from "@components/Header";
 import { Container } from "./styles";
 import { Highlight } from "@components/Highlight";
 import { GroupCard } from "@components/GroupCard";
-import { SafeAreaView } from "react-native";
+import { FlatList } from "react-native";
+import { useState } from "react";
+import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
 
 export function Groups() {
+    const [groups, setGroups] = useState<string[]>(['Turma 1'])
+
     return (
         <Container>
-            <SafeAreaView style={{ flex: 1 }}>
-                <Header showBackButton />
-                <Highlight
-                    title="Turmas"
-                    subtitle="Jogue com sua turma"
+            <Header />
+            <Highlight
+                title="Turmas"
+                subtitle="Jogue com sua turma"
+            />
+
+            <FlatList
+                data={groups}
+                keyExtractor={item => item}
+                contentContainerStyle={groups.length === 0 && { flex: 1 }}
+                renderItem={({ item }) =>
+                (<GroupCard
+                    tittle={item}
                 />
-                <GroupCard tittle="Turma 1" />
-            </SafeAreaView>
+                )}
+                ListEmptyComponent={() => (
+                    <ListEmpty message="Adicione uma turma" />
+                )}
+            />
+            <Button title="Criar Nova turma" />
+
         </Container>
     )
 }

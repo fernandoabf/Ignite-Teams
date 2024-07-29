@@ -4,9 +4,9 @@ import { Container, Icon, Title } from "./styles";
 type GroupCardProps = TouchableOpacityProps & {
     tittle: string;
 }
-export function GroupCard({ tittle }: GroupCardProps) {
+export function GroupCard({ tittle, ...rest }: GroupCardProps) {
     return (
-        <Container>
+        <Container {...rest}>
             <Icon />
 
             <Title>
