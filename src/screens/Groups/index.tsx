@@ -31,9 +31,10 @@ export function Groups() {
         try {
             const groupData = await groupsGetAll()
             setGroups(groupData)
-            setIsLoading(false)
         } catch (error) {
             console.log(error)
+        } finally {
+            setIsLoading(false)
         }
     }
 

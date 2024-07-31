@@ -105,9 +105,10 @@ export function Players() {
         try {
             const playersByTeam = await playersGetByGroupAndTeam(group, team)
             setPlayers(playersByTeam)
-            setIsLoading(false)
         } catch (error) {
             Alert.alert('Erro', 'Não foi possível carregar os participantes')
+        } finally {
+            setIsLoading(false)
         }
     }
 
